@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'lab',
-  description = 'A creative coding lab.',
+  title = 'tspringborg',
+  description = 'Personal site',
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -27,7 +27,9 @@ const currentPath = Astro.url.pathname;
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <title>{title === 'lab' ? 'lab' : `${title} — lab`}</title>
+    <title>
+        {title === 'lab' ? 'lab' : `${title} — lab`}
+    </title>
   </head>
   <body>
     <header>

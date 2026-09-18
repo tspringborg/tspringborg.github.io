@@ -16,3 +16,4 @@ npm-debug.log*
 # astro
 .astro/
 /.idea/
+.DS_Store

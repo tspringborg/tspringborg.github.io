@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'lab',
+  description = 'A creative coding lab.',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title === 'lab' ? 'lab' : `${title} — lab`}</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <a href="/" class="nav-logo">~/lab</a>
+        <ul class="nav-links">
+          <li><a href="/lab" aria-current={currentPath.startsWith('/lab') ? 'page' : undefined}>experiments</a></li>
+          <li><a href="/about" aria-current={currentPath === '/about' ? 'page' : undefined}>about</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page">
+      <slot />
+    </main>
+  </body>
+</html>

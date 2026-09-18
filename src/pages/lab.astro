@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Add your experiments here
+const experiments = [
+  {
+    slug: 'hyperspace',
+    title: 'Hyperspace',
+    description: 'WebGL warp speed star field. Hold to accelerate.',
+    tags: ['webgl', 'glsl'],
+    date: '2024-06',
+    status: 'live', // 'live' | 'wip'
+    href: '#',
+  },
+  {
+    slug: 'aurora',
+    title: 'Aurora Borealis',
+    description: 'Layered sine-wave shader mimicking polar light bands.',
+    tags: ['webgl', 'glsl', 'noise'],
+    date: '2024-05',
+    status: 'live',
+    href: '#',
+  },
+  {
+    slug: 'particle-field',
+    title: 'Particle Field',
+    description: 'N-body proximity graph with emergent constellation patterns.',
+    tags: ['canvas', 'generative'],
+    date: '2024-04',
+    status: 'live',
+    href: '#',
+  },
+  {
+    slug: 'sledding',
+    title: 'Sledding',
+    description: 'A small 3D sledding game built over a holiday weekend.',
+    tags: ['three.js', 'game'],
+    date: '2023-12',
+    status: 'wip',
+    href: '#',
+  },
+];
+---
+
+<Base title="experiments" description="Creative coding experiments — WebGL, generative art, and interactive things.">
+  <div class="container">
+    <header class="page-header">
+      <p class="eyebrow mono dim">~/lab/experiments</p>
+      <h1>experiments</h1>
+      <p class="lead dim">Things built for curiosity. Shaders, simulations, small games.</p>
+    </header>
+
+    <ul class="grid" role="list">
+      {experiments.map((exp) => (
+        <li>
+          <a href={exp.href} class="card" target={exp.href === '#' ? undefined : '_blank'} rel="noopener noreferrer">
+            <div class="card-top">
+              <span class="card-date mono dim">{exp.date}</span>
+              {exp.status === 'wip' && <span class="tag">wip</span>}
+            </div>
+            <h2 class="card-title">{exp.title}</h2>
+            <p class="card-desc dim">{exp.description}</p>
+            <ul class="card-tags" role="list">
+              {exp.tags.map(tag => (
+                <li><span class="tag">{tag}</span></li>
+              ))}
+            </ul>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
+
+<style>
+  .page-header {
+    padding-block: var(--space-xl) var(--space-lg);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: var(--space-xl);
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-sm);
+  }
+
+  h1 {
+    margin-bottom: var(--space-md);
+  }
+
+  .lead {
+    font-size: 1rem;
+    max-width: 48ch;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    list-style: none;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    background: var(--bg);
+    transition: background 0.15s;
+    height: 100%;
+    color: inherit;
+  }
+
+  .card:hover {
+    background: var(--surface);
+    text-decoration: none;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-xs);
+  }
+
+  .card-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    flex: 1;
+    line-height: 1.55;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    list-style: none;
+    margin-top: var(--space-sm);
+  }
+</style>
